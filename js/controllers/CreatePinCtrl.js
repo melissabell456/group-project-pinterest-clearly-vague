@@ -9,7 +9,8 @@ module.exports = function ($scope, PinFactory) {
   
   $scope.addPin = () => {
     $scope.pin.uid = 123456;
-    console.log($scope.pin);
+    PinFactory.addNewPin($scope.pin);
+    // console.log($scope.pin);
   };
 
   // PinFactory.getBoards(uid)
