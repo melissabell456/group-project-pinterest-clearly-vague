@@ -5,7 +5,7 @@ const angular = require('angular');
 module.exports = function ($q, $http, FBUrl) {
 
   const addNewPin = (newPinObj) => {
-    console.log(newPinObj);
+
     return $q( (resolve, reject) => {
       $http
       .post(`${FBUrl}/pins.json`, 
