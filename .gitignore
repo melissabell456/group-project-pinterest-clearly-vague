@@ -2,3 +2,5 @@ node_modules
 css
 dist
 .sass-cache
+package-lock.json
+js/values/fbcreds.js
