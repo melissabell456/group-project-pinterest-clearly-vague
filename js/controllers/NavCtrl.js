@@ -30,6 +30,7 @@ module.exports = function ($scope, AuthFactory, $window) {
     // If the url is #!/logout, then logout, otherwise go to url.
     $scope.navigate = url => {
         if (url === "#!/logout") AuthFactory.logoutUser();
+        else if (url === "#!/login") AuthFactory.loginUser();
         else $window.location.href = url;
     };
 

@@ -1,4 +1,4 @@
-<div>
+<div ng-controller="UserCtrl">
     <ul ng-repeat="link in navMenuList">
         <li ng-hide="isLoggedIn() ? link.hideWhenLoggedIn : !link.hideWhenLoggedIn">
             <a ng-click="navigate(link.url)">{{link.text}}</a>
