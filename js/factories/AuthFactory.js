@@ -2,20 +2,24 @@
 
 const firebase = require('firebase');
 
-module.exports = function (FBCreds, $q) {
+module.exports = function (FBCreds, $q, $window) {
 
+    let provider = new firebase.auth.GoogleAuthProvider();
     let currentUser = null;
 
-    const createUser = ({ email, password }) => {
-        return firebase.auth().createUserWithEmailAndPassword(email, password);
-    };
-
-    const loginUser = ({ email, password }) => {
-        return firebase.auth().signInWithEmailAndPassword(email, password);
+    const loginUser = () => {
+        firebase.auth().signInWithPopup(provider)
+            .then(user => {
+                console.log("logged in!", user);
+                $window.location.href = "#!/boards";
+            })
+            .catch(error => console.log('error', error));
     };
 
     const logoutUser = () => {
-        return firebase.auth().signOut();
+        firebase.auth().signOut()
+        .then(() => console.log('logged out, goodbye.'))
+        .catch(error => console.log('error', error));
     };
 
     const isAuthenticated = () => {
@@ -35,6 +39,6 @@ module.exports = function (FBCreds, $q) {
         });
     };
 
-    return { createUser, loginUser, logoutUser, isAuthenticated  };
+    return { loginUser, logoutUser, isAuthenticated  };
 
 };
