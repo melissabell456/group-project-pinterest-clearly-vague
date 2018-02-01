@@ -5,12 +5,11 @@ const firebase = require('firebase');
 
 module.exports = function ($scope, PinFactory) {
 
-  // let uid = firebase.auth().currentUser.uid;
+  let uid = firebase.auth().currentUser.uid;
   
   $scope.addPin = () => {
-    $scope.pin.uid = 123456;
+    $scope.pin.uid = uid;
     PinFactory.addNewPin($scope.pin);
-    // console.log($scope.pin);
   };
 
   // PinFactory.getBoards(uid)
