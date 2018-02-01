@@ -13,11 +13,12 @@ module.exports = function($q, $http, FBUrl) {
         });
     };
 
-    function addBoards() {
+    function addBoard(boardObj) {
         return $q((resolve, reject) => {
+            console.log("this will go to firebase", boardObj);
             $http
-                .post(`${FBUrl}/boards.json?orderBy="uid"&equalTo="${firebase.auth().currentUser.uid}"`);
-                JSON.stringify(addBoards)
+                .post(`${FBUrl}/boards.json`,
+                JSON.stringify(boardObj))
                 .then(({ data }) => {
                     let boardArr = Object.keys(data).map(boardKey => {
                         console.log('boardKey', boardKey);
@@ -27,6 +28,6 @@ module.exports = function($q, $http, FBUrl) {
                 });
         });
     }
-        return {addBoards, getBoards};
+        return {addBoard, getBoards};
     };
     
