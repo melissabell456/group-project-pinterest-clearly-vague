@@ -3,7 +3,7 @@
 const angular = require('angular');
 // Other dependencies below
 
-const app = angular.module('testApp', []);
+const app = angular.module('kingPinApp', []);
 
 
 require('./factories');
