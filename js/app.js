@@ -5,19 +5,19 @@ const ngRoute = require('angular-route');
 const firebase = require('firebase');
 // Other dependencies below
 
-// let isAuth = (AuthFactory) =>
-//     new Promise((resolve, reject) => {
-//         AuthFactory.isAuthenticated().then(userBool => {
-//             console.log("user???", userBool);
-//             if (userBool) {
-//                 console.log("Authenticated user. Go ahead");
-//                 resolve();
-//             } else {
-//                 console.log("Not Authenticated user. Go away");
-//                 reject();
-//             }
-//         });
-//     });
+let isAuth = (AuthFactory) =>
+    new Promise((resolve, reject) => {
+        AuthFactory.isAuthenticated().then(userBool => {
+            console.log("User resolved...", userBool);
+            if (userBool) {
+                console.log("Authenticated: Two Thumbs WAAAAAY Up");
+                resolve();
+            } else {
+                console.log("Not Authenticated: GETOUT!!");
+                reject();
+            }
+        });
+    });
 
 
 const app = angular.module('kingPinApp', ['ngRoute'])
@@ -26,12 +26,16 @@ const app = angular.module('kingPinApp', ['ngRoute'])
         $routeProvider
         .when("/login", {
             templateUrl: "/partials/nav.html",
-            controller: "/NavCtrl"
+            controller: "NavCtrl"
+        })
+        .when("/user", {
+            templateUrl: "/partials/user.html",
+            controller: "UserCtrl"
         })
         .when("/boards", {
             templateUrl: "/partials/view-boards.html",
             controller: "BoardsCtrl",
-            // resolve: {isAuth}
+            // resolve: { isAuth }
         })
         .when("/boards/:boardID", {
             templateUrl: "/partials/view-pins.html",
