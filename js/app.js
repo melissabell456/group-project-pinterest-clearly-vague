@@ -8,12 +8,12 @@ const firebase = require('firebase');
 let isAuth = (AuthFactory) =>
     new Promise((resolve, reject) => {
         AuthFactory.isAuthenticated().then(userBool => {
-            console.log("user???", userBool);
+            console.log("User resolved...", userBool);
             if (userBool) {
-                console.log("Authenticated user. Go ahead");
+                console.log("Authenticated: Two Thumbs WAAAAAY Up");
                 resolve();
             } else {
-                console.log("Not Authenticated user. Go away");
+                console.log("Not Authenticated: GETOUT!!");
                 reject();
             }
         });
@@ -28,10 +28,14 @@ const app = angular.module('kingPinApp', ['ngRoute'])
             templateUrl: "/partials/nav.html",
             controller: "NavCtrl"
         })
+        .when("/user", {
+            templateUrl: "/partials/user.html",
+            controller: "UserCtrl"
+        })
         .when("/boards", {
             templateUrl: "/partials/view-boards.html",
             controller: "BoardsCtrl",
-            resolve: {isAuth}
+            resolve: { isAuth }
         })
         .when("/boards/:boardID", {
             templateUrl: "/partials/view-pins.html",
