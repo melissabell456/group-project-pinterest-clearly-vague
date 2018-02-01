@@ -6,11 +6,11 @@ module.exports = function ($scope, AuthFactory, $window) {
     $scope.navMenuList = [
         {
             text: "Add Board",
-            url: "#!/createboard"
+            url: "#!/create-board"
         },
         {
             text: "Add Pin",
-            url: "#!/createpin"
+            url: "#!/create-pin"
         },
         {
             text: "My Boards",
