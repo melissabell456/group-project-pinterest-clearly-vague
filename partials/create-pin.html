@@ -1,0 +1,12 @@
+<div>
+  <input type="text" placeholder="Title" ng-model="pin.title">
+  <br>
+  <input type="text" placeholder="IMG URL" ng-model="pin.img">
+  <br>
+  <textarea placeholder="Additional Information" ng-model="pin.notes" rows="15" cols="20"></textarea>
+  <br>
+  <!-- <select ng-repeat="board in boardArr">
+    <option value="board.board_id" ng-model="pin.board_id">{{board.name}}</option>
+  </select> -->
+  <button ng-click="addPin()">Add My Pin</button>
+</div>
