@@ -1,0 +1,31 @@
+{
+  "name": "group-project-pinterest-clearly-vague",
+  "version": "1.0.0",
+  "description": "You will be broken into teams and your goals is to reverse engineer the basic functionality of Pinterest and build your own version of it.",
+  "main": "Gruntfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nss-day-cohort-23/group-project-pinterest-clearly-vague.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nss-day-cohort-23/group-project-pinterest-clearly-vague/issues"
+  },
+  "homepage": "https://github.com/nss-day-cohort-23/group-project-pinterest-clearly-vague#readme",
+  "dependencies": {
+    "angular": "^1.6.8",
+    "angular-route": "^1.6.8",
+    "firebase": "^4.9.0",
+    "grunt": "^1.0.1",
+    "grunt-browserify": "^5.2.0",
+    "grunt-contrib-jshint": "^1.1.0",
+    "grunt-contrib-sass": "^1.0.0",
+    "grunt-contrib-watch": "^1.0.0",
+    "matchdep": "^2.0.0"
+  }
+}
