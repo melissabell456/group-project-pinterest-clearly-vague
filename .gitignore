@@ -1,4 +1,7 @@
 node_modules
+.DS_Store
 css
 dist
 .sass-cache
+package-lock.json
+js/values/fbcreds.js
