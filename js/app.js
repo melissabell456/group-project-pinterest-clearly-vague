@@ -62,6 +62,7 @@ const app = angular.module('kingPinApp', ['ngRoute'])
 
 require('./factories');
 require('./controllers');
+require('./values/fbcreds'); 
 
 
 // Put routes here
