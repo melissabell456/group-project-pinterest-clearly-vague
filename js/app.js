@@ -5,7 +5,7 @@ const ngRoute = require('angular-route');
 const firebase = require('firebase');
 // Other dependencies below
 
-let isAuth = (AuthFactory) =>
+let isAuth = (AuthFactory, $window) =>
     new Promise((resolve, reject) => {
         AuthFactory.isAuthenticated().then(userBool => {
             console.log("User resolved...", userBool);
@@ -14,6 +14,7 @@ let isAuth = (AuthFactory) =>
                 resolve();
             } else {
                 console.log("Not Authenticated: GETOUT!!");
+                $window.location.href = "#!/home";
                 reject();
             }
         });
@@ -24,13 +25,9 @@ const app = angular.module('kingPinApp', ['ngRoute'])
     .constant("FBUrl", "https://clearly-vague.firebaseio.com/")
     .config($routeProvider => {
         $routeProvider
-        .when("/login", {
-            templateUrl: "/partials/nav.html",
-            controller: "NavCtrl"
-        })
-        .when("/user", {
-            templateUrl: "/partials/user.html",
-            controller: "UserCtrl"
+        .when("/home", {
+            templateUrl: "/partials/home.html",
+            controller: ""
         })
         .when("/boards", {
             templateUrl: "/partials/view-boards.html",
@@ -52,7 +49,7 @@ const app = angular.module('kingPinApp', ['ngRoute'])
             controller: "CreatePinCtrl",
             // resolve: { isAuth }
         })
-        .otherwise("/login");
+        .otherwise("/home");
     })
     .run(FBCreds => {
         let creds = FBCreds;
