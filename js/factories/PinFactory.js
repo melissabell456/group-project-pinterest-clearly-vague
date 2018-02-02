@@ -42,7 +42,15 @@ module.exports = function($q, $http, FBUrl) {
         });
     };
 
+    const deletePin = id => {
+        return $q((resolve, reject) => {
+            $http
+            .delete(`${FBUrl}pins/${id}.json`)
+            .then(({data}) => resolve(data));
+        });
+    };
 
-    return {addBoard, getBoards, getPins};
+
+    return {addBoard, getBoards, getPins, deletePin};
 };
     

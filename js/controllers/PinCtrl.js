@@ -10,4 +10,8 @@ module.exports = function ($scope, $routeParams, PinFactory) {
         });
         $scope.pinArray = pinArray;
     });
+
+    $scope.deletePin = id => {
+        PinFactory.deletePin(id);
+    };
 };
