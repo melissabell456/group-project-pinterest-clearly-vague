@@ -8,10 +8,13 @@ module.exports = function($q, $http, FBUrl) {
             $http
             .get(`${FBUrl}`)
             .then(({data}) => {
-                resolve(data);
+                let boardArr = Object.keys(data).map(boardKey => {
+                    console.log('boardKey', boardKey);
+                    data[boardKey].id = boardKey;
+                    return data[boardKey];
             });
         });
-    };
+    });
 
     function addBoard(boardObj) {
         return $q((resolve, reject) => {
@@ -20,14 +23,15 @@ module.exports = function($q, $http, FBUrl) {
                 .post(`${FBUrl}/boards.json`,
                 JSON.stringify(boardObj))
                 .then(({ data }) => {
-                    let boardArr = Object.keys(data).map(boardKey => {
-                        console.log('boardKey', boardKey);
-                        data[boardKey].id = boardKey;
-                        return data[boardKey];
+                    console.log(Object.keys(data), "data");
+                    // let boardArr = Object.keys(data).map(boardKey => {
+                    //     console.log('boardKey', boardKey);
+                    //     data[boardKey].id = boardKey;
+                    //     return data[boardKey];
                     });
                 });
-        });
-    }
-        return {addBoard, getBoards};
+        }
+    };
+        return {getBoards};
     };
     
