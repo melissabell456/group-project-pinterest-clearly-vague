@@ -1,9 +1,25 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<!-- <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div ng-controller="UserCtrl">
-        <ul ng-repeat="link in navMenuList">
-            <li ng-hide="isLoggedIn() ? link.hideWhenLoggedIn : !link.hideWhenLoggedIn">
-                <a ng-click="navigate(link.url)">{{link.text}}</a>
+        <ul class="navbar-nav" ng-repeat="link in navMenuList">
+            <li class="nav-item" ng-hide="isLoggedIn() ? link.hideWhenLoggedIn : !link.hideWhenLoggedIn">
+                <a class="nav-item" ng-click="navigate(link.url)">{{link.text}}</a>
             </li>
         </ul> 
     </div>
+</nav> -->
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light" ng-controller="UserCtrl">
+        <a class="navbar-brand" href="#">Clearly Vague</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+          <div class="navbar-nav" ng-repeat="link in navMenuList">
+            <!-- <a class="nav-item nav-link active" href="#">Home <span class="sr-only">(current)</span></a> -->
+            <div ng-hide="isLoggedIn() ? link.hideWhenLoggedIn : !link.hideWhenLoggedIn">
+                <a class="nav-item nav-link" ng-click="navigate(link.url)">{{link.text}}</a>
+            </div>
+            <!-- <a class="nav-item nav-link" href="#">Pricing</a> -->
+          </div>
+        </div>
 </nav>
