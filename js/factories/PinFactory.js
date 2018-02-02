@@ -44,7 +44,7 @@ module.exports = function ($q, $http, FBUrl) {
         });
     };
 
-    const deleteBoard = (boardId) => {
+    const deleteBoards = boardId => {
         return $q((resolve, reject) => {
             $http.delete(`${FBUrl}/boards/${boardId}.json`)
                 .then((data) => {
@@ -74,5 +74,5 @@ module.exports = function ($q, $http, FBUrl) {
     };
 
 
-    return { addBoard, getBoards, getPins, deletePin, addNewPin, deleteBoard};
+    return { addBoard, getBoards, getPins, deletePin, addNewPin, deleteBoards};
 };
