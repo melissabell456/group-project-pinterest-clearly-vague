@@ -1,7 +1,9 @@
-<div ng-controller="UserCtrl">
-    <ul ng-repeat="link in navMenuList">
-        <li ng-hide="isLoggedIn() ? link.hideWhenLoggedIn : !link.hideWhenLoggedIn">
-            <a ng-click="navigate(link.url)">{{link.text}}</a>
-        </li>
-    </ul> 
-</div>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div ng-controller="UserCtrl">
+        <ul ng-repeat="link in navMenuList">
+            <li ng-hide="isLoggedIn() ? link.hideWhenLoggedIn : !link.hideWhenLoggedIn">
+                <a ng-click="navigate(link.url)">{{link.text}}</a>
+            </li>
+        </ul> 
+    </div>
+</nav>
