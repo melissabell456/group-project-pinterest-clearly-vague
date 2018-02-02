@@ -2,19 +2,29 @@
 
 const firebase = require('firebase');
 
-module.exports = function (FBCreds, $q, $window) {
+module.exports = function (FBCreds, $q, $window, $http) {
 
     let provider = new firebase.auth.GoogleAuthProvider();
     let currentUser = null;
 
     const loginUser = () => {
         firebase.auth().signInWithPopup(provider)
-            .then(user => {
+            .then(({ user }) => {
                 console.log("logged in!", user);
-                $window.location.href = "#!/boards";
+                // $window.location.href = "#!/boards";
             })
             .catch(error => console.log('error', error));
     };
+
+    const addUserToDB = (userObj) => {
+        return $q( (resolve, reject) => {
+            $http
+            .post(`${FBUrl}/users.json`, 
+            JSON.stringify(userObj))
+            .then( (data) => {
+                console.log(data);
+            })
+            
 
     const logoutUser = () => {
         firebase.auth().signOut()
