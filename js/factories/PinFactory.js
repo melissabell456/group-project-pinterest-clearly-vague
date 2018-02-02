@@ -3,6 +3,7 @@
 const angular = require('angular');
 const firebase = require('firebase');
 
+
 module.exports = function ($q, $http, FBUrl) {
 
   const addNewPin = (newPinObj) => {
@@ -19,19 +20,18 @@ module.exports = function ($q, $http, FBUrl) {
         });
       };
 
-  const getBoards = (uid) => {
+  const getBoards = () => {
         return $q((resolve, reject) => {
             $http
-            .get(`${FBUrl}`)
-            .then(({data}) => {
-                let boardArr = Object.keys(data).map(boardKey => {
-                    console.log('boardKey', boardKey);
-                    data[boardKey].id = boardKey;
-                    return data[boardKey];
+                .get(`${FBUrl}/boards.json?orderBy="uid"&equalTo="${firebase.auth().currentUser.uid}"`)
+            .then((boardData) => {
+                Object.keys(boardData.data).map(boardKey => {
+                    boardData.data[boardKey].board_id = boardKey;
+                    return boardData[boardKey];});
+                resolve(boardData);
             });
         });
-    });
-};
+    };
 
   function addBoard(boardObj) {
       return $q((resolve, reject) => {
@@ -41,11 +41,6 @@ module.exports = function ($q, $http, FBUrl) {
               JSON.stringify(boardObj))
               .then(({ data }) => {
                   console.log(Object.keys(data), "data");
-                  // let boardArr = Object.keys(data).map(boardKey => {
-                  //     console.log('boardKey', boardKey);
-                  //     data[boardKey].id = boardKey;
-                  //     return data[boardKey];
-                  // });
               });
           });
   }
