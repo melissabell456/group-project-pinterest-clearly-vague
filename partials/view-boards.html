@@ -3,6 +3,7 @@
     <ul ng-repeat="board in boards">
         <li>
             <a href="#!/boards/{{board.board_id}}">{{board.title}}</a>
+            <button ng-click="deleteBoard(board.board_id)">Delete Board</button>
         </li>
     </ul>
 </div>
