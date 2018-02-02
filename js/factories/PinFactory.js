@@ -3,6 +3,7 @@
 const angular = require('angular');
 const firebase = require('firebase');
 
+
 module.exports = function ($q, $http, FBUrl) {
 
   const addNewPin = (newPinObj) => {
@@ -19,7 +20,7 @@ module.exports = function ($q, $http, FBUrl) {
         });
       };
 
-  const getBoards = (uid) => {
+  const getBoards = () => {
         return $q((resolve, reject) => {
             $http
             .get(`${FBUrl}`)
@@ -38,15 +39,8 @@ module.exports = function ($q, $http, FBUrl) {
             console.log("this will go to firebase", boardObj);
             $http
                 .post(`${FBUrl}/boards.json`,
-                JSON.stringify(boardObj))
-                .then(({ data }) => {
-                    console.log(Object.keys(data), "data");
-                    // let boardArr = Object.keys(data).map(boardKey => {
-                    //     console.log('boardKey', boardKey);
-                    //     data[boardKey].id = boardKey;
-                    //     return data[boardKey];
-                    // });
-                });
+                       JSON.stringify(boardObj))
+                .then(({ data }) => {});
         });
     };
 
@@ -65,7 +59,6 @@ module.exports = function ($q, $http, FBUrl) {
             .then(({data}) => resolve(data));
         });
     };
-
 
     return {addBoard, getBoards, getPins, deletePin};
 };
