@@ -9,9 +9,9 @@ module.exports = function (FBCreds, $q, $window) {
 
     const loginUser = () => {
         firebase.auth().signInWithPopup(provider)
-            .then(user => {
-                console.log("logged in!", user);
-                $window.location.href = "#!/boards";
+            .then(({ user }) => {
+                console.log("logged in!", user.G, user.displayName);
+                // $window.location.href = "#!/boards";
             })
             .catch(error => console.log('error', error));
     };
