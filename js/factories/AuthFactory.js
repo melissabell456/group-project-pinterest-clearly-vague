@@ -11,11 +11,11 @@ module.exports = function (FBCreds, $q, $window, $http, FBUrl) {
         firebase.auth().signInWithPopup(provider)
             .then((user) => {
                 console.log("logged in!", user);
-                let userDetails = {
-                    name: user.displayName,
-                    uid: user.G,
-                };
-                addUserToDB(userDetails);
+                // let userDetails = {
+                //     name: user.displayName,
+                //     uid: user.G,
+                // };
+                // addUserToDB(userDetails);
                 // $window.location.href = "#!/boards";
             })
             .catch(error => console.log('error', error));
