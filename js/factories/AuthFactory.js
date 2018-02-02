@@ -9,12 +9,11 @@ module.exports = function (FBCreds, $q, $window, $http, FBUrl) {
 
     const loginUser = () => {
         firebase.auth().signInWithPopup(provider)
+        // deconstructing user object to access full name, uid(G), and whether or not user is new (isNewUser)
             .then( ({additionalUserInfo: {isNewUser}, user: {displayName, G}}) => { 
-                console.log("username", displayName);
-                console.log("status", isNewUser);
-                console.log("ID", G);
+        // utilizing property on firebase authentication to check if user is new
                 if (isNewUser) {
-                    console.log("new");
+        // gathering new user's name and uid to send to firebase user collection
                     let userDetails = {
                         name: displayName,
                         uid: G,
@@ -28,7 +27,6 @@ module.exports = function (FBCreds, $q, $window, $http, FBUrl) {
 
 
     const addUserToDB = (userObj) => {
-        console.log(userObj);
         return $q( (resolve, reject) => {
             $http
             .post(`${FBUrl}/users.json`, 
