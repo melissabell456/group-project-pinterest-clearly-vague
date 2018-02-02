@@ -12,13 +12,13 @@ module.exports = function ($scope, PinFactory) {
     PinFactory.addNewPin($scope.pin);
   };
 
-  // PinFactory.getBoards(uid)
-  // .then( (userBoards) => {
-  //   $scope.userBoards = userBoards;
-  // })
-  // .catch( (err) => {
-  //   console.log(err);
-  // });
+  PinFactory.getBoards()
+  .then(userBoards => {
+    $scope.userBoards = userBoards.data;
+  })
+  .catch(err => {
+    console.log(err);
+  });
     
 
 };

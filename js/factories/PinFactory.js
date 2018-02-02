@@ -20,16 +20,15 @@ module.exports = function ($q, $http, FBUrl) {
         });
       };
 
-  const getBoards = () => {
+      const getBoards = () => {
         return $q((resolve, reject) => {
             $http
-            .get(`${FBUrl}`)
-            .then(({data}) => {
-                let boardArr = Object.keys(data).map(boardKey => {
-                    console.log('boardKey', boardKey);
-                    data[boardKey].id = boardKey;
-                    return data[boardKey];
-                });
+                .get(`${FBUrl}/boards.json?orderBy="uid"&equalTo="${firebase.auth().currentUser.uid}"`)
+            .then((boardData) => {
+                Object.keys(boardData.data).map(boardKey => {
+                    boardData.data[boardKey].board_id = boardKey;
+                    return boardData[boardKey];});
+                resolve(boardData);
             });
         });
     };
@@ -48,7 +47,8 @@ module.exports = function ($q, $http, FBUrl) {
         return $q((resolve, reject) => {
             $http
             .get(`${FBUrl}/pins.json?orderBy="board_id"&equalTo="${boardId}"`)
-            .then(({data}) => resolve(data));
+            .then(({data}) => resolve(data))
+            .catch(err => console.log('err', err));
         });
     };
 
@@ -60,6 +60,6 @@ module.exports = function ($q, $http, FBUrl) {
         });
     };
 
-    return {addBoard, getBoards, getPins, deletePin};
+    return {addBoard, getBoards, getPins, deletePin, addNewPin};
 };
     
