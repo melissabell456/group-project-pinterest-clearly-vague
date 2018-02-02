@@ -5,8 +5,6 @@
   <br>
   <textarea placeholder="Additional Information" ng-model="pin.notes" rows="15" cols="20"></textarea>
   <br>
-  <!-- <select ng-repeat="board in boardArr">
-    <option value="board.board_id" ng-model="pin.board_id">{{board.name}}</option>
-  </select> -->
+  <select ng-model="pin.board_id" ng-options="board.board_id as board.title for board in userBoards"></select>
   <button ng-click="addPin()">Add My Pin</button>
 </div>
