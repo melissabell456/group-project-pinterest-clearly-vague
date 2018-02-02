@@ -44,8 +44,19 @@ module.exports = function ($q, $http, FBUrl) {
               });
           });
   }
-        
-    return { addBoard, getBoards, addNewPin };
+  
+  const deleteBoard = (boardObj) => {
+    return $q((resolve, reject) => {
+      $http.delete(`${FBUrl}/boards.json`)
+        .then((data) => {
+          resolve(data);
+        })
+        .catch((err) => {
+          reject(err);
+        });
+    });
+  };
+    return { addBoard, getBoards, addNewPin, deleteBoard };
 
 };
     
