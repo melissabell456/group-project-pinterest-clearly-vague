@@ -32,22 +32,22 @@ const app = angular.module('kingPinApp', ['ngRoute'])
         .when("/boards", {
             templateUrl: "/partials/view-boards.html",
             controller: "BoardsCtrl",
-            // resolve: { isAuth }
+            resolve: { isAuth }
         })
         .when("/boards/:boardID", {
             templateUrl: "/partials/view-pins.html",
             controller: "PinCtrl",
-            // resolve: { isAuth }
+            resolve: { isAuth }
         })
         .when("/create-board", {
             templateUrl: "/partials/create-board.html",
             controller: "CreateBoardCtrl",
-            // resolve: { isAuth }
+            resolve: { isAuth }
         })
         .when("/create-pin", {
             templateUrl: "/partials/create-pin.html",
             controller: "CreatePinCtrl",
-            // resolve: { isAuth }
+            resolve: { isAuth }
         })
         .otherwise("/home");
     })
