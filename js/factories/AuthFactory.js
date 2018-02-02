@@ -9,31 +9,37 @@ module.exports = function (FBCreds, $q, $window, $http, FBUrl) {
 
     const loginUser = () => {
         firebase.auth().signInWithPopup(provider)
-            .then((user) => {
-                console.log("logged in!", user);
-                // let userDetails = {
-                //     name: user.displayName,
-                //     uid: user.G,
-                // };
-                // addUserToDB(userDetails);
-                // $window.location.href = "#!/boards";
+            .then( ({additionalUserInfo: {isNewUser}, user: {displayName, G}}) => { 
+                console.log("username", displayName);
+                console.log("status", isNewUser);
+                console.log("ID", G);
+                if (isNewUser) {
+                    console.log("new");
+                    let userDetails = {
+                        name: displayName,
+                        uid: G,
+                    };
+                    addUserToDB(userDetails);
+                }
+                $window.location.href = "#!/boards";
             })
             .catch(error => console.log('error', error));
     };
 
+
     const addUserToDB = (userObj) => {
-        // console.log(userObj);
-        // return $q( (resolve, reject) => {
-        //     $http
-        //     .post(`${FBUrl}/users.json`, 
-        //     JSON.stringify(userObj))
-        //     .then( (data) => {
-        //         console.log(data);
-        //     })
-        //     .catch( (err) => {
-        //         console.log(err);
-        //     });
-        // });
+        console.log(userObj);
+        return $q( (resolve, reject) => {
+            $http
+            .post(`${FBUrl}/users.json`, 
+            JSON.stringify(userObj))
+            .then( (data) => {
+                console.log(data);
+            })
+            .catch( (err) => {
+                console.log(err);
+            });
+        });
     };
             
 
