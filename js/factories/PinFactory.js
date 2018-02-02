@@ -15,6 +15,7 @@ module.exports = function($q, $http, FBUrl) {
             });
         });
     });
+};
 
     function addBoard(boardObj) {
         return $q((resolve, reject) => {
@@ -28,10 +29,10 @@ module.exports = function($q, $http, FBUrl) {
                     //     console.log('boardKey', boardKey);
                     //     data[boardKey].id = boardKey;
                     //     return data[boardKey];
-                    });
+                    // });
                 });
-        }
-    };
-        return {getBoards};
+            });
+    }
+        return {addBoard, getBoards};
     };
     
