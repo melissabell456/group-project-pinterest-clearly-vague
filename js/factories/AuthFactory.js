@@ -10,7 +10,7 @@ module.exports = function (FBCreds, $q, $window, $http, FBUrl) {
     const loginUser = () => {
         firebase.auth().signInWithPopup(provider)
         // deconstructing user object to access full name, uid(G), and whether or not user is new (isNewUser)
-            .then( ({additionalUserInfo: {isNewUser}, user: {displayName: name, G: uid}}) => { 
+            .then( ({additionalUserInfo: {isNewUser}, user: {displayName: name, uid: uid}}) => { 
         // utilizing property on firebase authentication to check if user is new
                 if (isNewUser) {
         // gathering new user's name and uid to send to firebase user collection
