@@ -18,7 +18,10 @@ module.exports = function (FBCreds, $q, $window) {
 
     const logoutUser = () => {
         firebase.auth().signOut()
-        .then(() => console.log('logged out, goodbye.'))
+        .then(() => {
+            console.log('logged out, goodbye.');
+            $window.location.href = "#!/home";
+        })
         .catch(error => console.log('error', error));
     };
 
