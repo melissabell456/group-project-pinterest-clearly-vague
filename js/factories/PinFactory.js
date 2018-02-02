@@ -13,6 +13,7 @@ module.exports = function ($q, $http, FBUrl) {
           JSON.stringify(newPinObj))
           .then( (returnedData) => {
             console.log("what is returned", returnedData);
+            resolve(returnedData);
           })
           .catch((err) => {
             console.log("no luck", err);
@@ -39,7 +40,7 @@ module.exports = function ($q, $http, FBUrl) {
             $http
                 .post(`${FBUrl}/boards.json`,
                        JSON.stringify(boardObj))
-                .then(({ data }) => {});
+                .then(data => resolve(data));
         });
     };
 
@@ -56,7 +57,7 @@ module.exports = function ($q, $http, FBUrl) {
         return $q((resolve, reject) => {
             $http
             .delete(`${FBUrl}pins/${id}.json`)
-            .then(({data}) => resolve(data));
+            .then(data => resolve(data));
         });
     };
 

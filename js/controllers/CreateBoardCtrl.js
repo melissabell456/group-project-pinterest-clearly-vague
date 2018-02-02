@@ -2,13 +2,13 @@
 
 const firebase = require('firebase');
 
-module.exports =function($scope, $location, PinFactory) {
+module.exports =function($scope, $window, PinFactory) {
     $scope.saveBoard = () => {
         console.log('New Board to add', $scope.board );
         $scope.board.uid = firebase.auth().currentUser.uid;
         PinFactory.addBoard($scope.board)
-        .then( (data) => {
-        $location.url("/boards/new");
+        .then( () => {
+           $window.location.href = `#!/boards`;
         });
     };
 };

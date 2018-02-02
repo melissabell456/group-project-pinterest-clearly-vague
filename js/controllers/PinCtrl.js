@@ -1,6 +1,6 @@
 'use strict';
 
-module.exports = function ($scope, $routeParams, PinFactory) {
+module.exports = function ($scope, $routeParams, PinFactory, $window) {
     PinFactory.getPins($routeParams.boardID)
     .then(pins => {
         console.log('pins', pins);
@@ -13,6 +13,7 @@ module.exports = function ($scope, $routeParams, PinFactory) {
     });
 
     $scope.deletePin = id => {
-        PinFactory.deletePin(id);
+        PinFactory.deletePin(id)
+        .then(() => $window.location.reload());
     };
 };
