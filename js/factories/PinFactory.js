@@ -12,12 +12,12 @@ module.exports = function($q, $http, FBUrl) {
                     console.log('boardKey', boardKey);
                     data[boardKey].id = boardKey;
                     return data[boardKey];
+                });
             });
         });
-    });
-};
+    };
 
-    function addBoard(boardObj) {
+    const addBoard = boardObj => {
         return $q((resolve, reject) => {
             console.log("this will go to firebase", boardObj);
             $http
@@ -31,8 +31,18 @@ module.exports = function($q, $http, FBUrl) {
                     //     return data[boardKey];
                     // });
                 });
-            });
-    }
-        return {addBoard, getBoards};
+        });
     };
+
+    const getPins = boardId => {
+        return $q((resolve, reject) => {
+            $http
+            .get(`${FBUrl}/pins.json?orderBy="board_id"&equalTo="${boardId}"`)
+            .then(({data}) => resolve(data));
+        });
+    };
+
+
+    return {addBoard, getBoards, getPins};
+};
     
