@@ -1,6 +1,7 @@
 <nav class="navbar navbar-light" style="background-color:whitesmoke;" ng-controller="UserCtrl">
-        <span class="navbar-brand" href="#">{ clearly {vague} }</span>
-        <span ng-hide="isLoggedIn() ? link.hideWhenLoggedIn : !link.hideWhenLoggedIn" id="navbar-item">{{userName}}</span>
+        <span class="navbar-brand" href="#">{ clearly {vague} }
+        <span ng-hide="isLoggedIn() ? link.hideWhenLoggedIn : !link.hideWhenLoggedIn" id="byUser">by {{userName}}</span>
+        </span>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
