@@ -89,11 +89,10 @@ module.exports = function ($q, $http, FBUrl) {
         });
     };
 
-    const editPin = (boardId, id) => {
-        console.log(id, "test");
+    const editPin = (pinObj, id) => {
         return $q((resolve, reject) => {
             $http
-                .patch(`${FBUrl}pins/${id}.json`) 
+                .put(`${FBUrl}pins/${id}.json`, JSON.stringify(pinObj))
                 .then(({ data }) => resolve(data));
         });
     };
@@ -106,6 +105,14 @@ module.exports = function ($q, $http, FBUrl) {
         });
     };
 
+    const onePin = FbID => {
+        return $q((resolve, reject) => {
+            $http
+                .get(`${FBUrl}pins/${FbID}.json`)
+                .then(({ data }) => resolve(data));
+        });
+    };
 
-    return { addBoard, getBoards, getPins, editPin, addNewPin, deleteBoards, deletePin};
+
+    return { addBoard, getBoards, getPins, editPin, addNewPin, deleteBoards, deletePin, onePin};
 };
