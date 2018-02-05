@@ -20,9 +20,23 @@ a {
 }
 
 #startPin {
-    transition: all .5s;
+    transition: all .2s;
     &:hover{
         color: rgb(255, 249, 218);
-        box-shadow: 0 0 3vw rgb(255, 227, 68);
+        letter-spacing: .004em;
+        box-shadow: 0 0 2vw .3vw rgb(255, 227, 68);
+        animation: glow 1.5s linear infinite;
+    }
+}
+
+@keyframes glow {
+    0% {
+        box-shadow: 0 0 2vw .3vw rgb(255, 227, 68);
+    }
+    50% {
+        box-shadow: 0 0 3vw 1vw rgb(255, 227, 68), 0 0 1vw .3vw rgb(68, 255, 255);
+    }
+    100% {
+        box-shadow: 0 0 2vw .3vw rgb(255, 227, 68);
     }
 }
