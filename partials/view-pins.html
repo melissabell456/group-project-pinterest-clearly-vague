@@ -1,10 +1,11 @@
-<div>
-    <ul ng-repeat='pin in pinArray'>
-        <li>
-            <h3>{{pin.title}}</h3>
+<div class="container">
+    <div class="row">
+        <div class="col-3 pin" ng-repeat='pin in pinArray'>
+            <h4>{{pin.title}}</h3>
             <img src='{{pin.img}}' alt='{{pin.title}}'></img>
-            <p>{{pin.notes}}</p>
-            <button ng-click="deletePin(pin.id)">Delete</button>
-        </li>
-    </ul>
+            <p>"{{pin.notes}}"</p>
+                <button type="button" ng-click="editPin(pin.id)" class="btn btn-outline-secondary btn btn-primary btn-sm">Edit</button>
+                <button type="button" ng-click="deletePin(pin.id)" class="btn btn-outline-danger btn btn-primary btn-sm">Delete</button>
+        </div>
+    </div>
 </div>
