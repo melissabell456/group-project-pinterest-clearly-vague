@@ -42,15 +42,14 @@ module.exports = function ($q, $http, FBUrl) {
                 // Wait until all pins are recived and take out first image.
                 Promise.all(boardsWithImagePromiseArray).then(pinPromises => {
                     let pinsPromisesArray = Object.values(pinPromises);
+                    console.log('pinPromiseseArray', pinsPromisesArray);
                     // If there are any images in the board
                     pinsPromisesArray.map(pins => {
                         let pinArray = Object.values(pins);
                         if(pinArray.length  >  0){
                             let firstPin = pinArray[0];
-
                             let boardToAddImage = Object.values(boardData).find(({board_id}) => board_id === firstPin.board_id);
-
-                            boardToAddImage = firstPin.img;
+                            boardToAddImage.img = firstPin.img;
                         }
                     });
                     resolve(boardData);
