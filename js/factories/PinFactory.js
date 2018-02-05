@@ -6,17 +6,18 @@ const firebase = require('firebase');
 
 module.exports = function ($q, $http, FBUrl) {
 
-    const addNewPin = (newPinObj) => {
-        return $q((resolve, reject) => {
-            $http
-                .post(`${FBUrl}/pins.json`,
-                JSON.stringify(newPinObj))
-                .then((returnedData) => {
-                    console.log("what is returned", returnedData);
-                })
-                .catch((err) => {
-                    console.log("no luck", err);
-                });
+  const addNewPin = (newPinObj) => {
+    return $q( (resolve, reject) => {
+          $http
+          .post(`${FBUrl}/pins.json`, 
+          JSON.stringify(newPinObj))
+          .then( (returnedData) => {
+            console.log("what is returned", returnedData);
+            resolve(returnedData);
+          })
+          .catch((err) => {
+            console.log("no luck", err);
+          });
         });
     };
 
@@ -39,8 +40,8 @@ module.exports = function ($q, $http, FBUrl) {
             console.log("this will go to firebase", boardObj);
             $http
                 .post(`${FBUrl}/boards.json`,
-                JSON.stringify(boardObj))
-                .then(({ data }) => { });
+                       JSON.stringify(boardObj))
+                .then(data => resolve(data));
         });
     };
 
