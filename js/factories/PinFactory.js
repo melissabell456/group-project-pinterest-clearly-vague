@@ -89,6 +89,14 @@ module.exports = function ($q, $http, FBUrl) {
         });
     };
 
+    const editPin = (pinObj, id) => {
+        return $q((resolve, reject) => {
+            $http
+                .put(`${FBUrl}pins/${id}.json`, JSON.stringify(pinObj))
+                .then(({ data }) => resolve(data));
+        });
+    };
+
     const deletePin = id => {
         return $q((resolve, reject) => {
             $http
@@ -97,6 +105,14 @@ module.exports = function ($q, $http, FBUrl) {
         });
     };
 
+    const onePin = FbID => {
+        return $q((resolve, reject) => {
+            $http
+                .get(`${FBUrl}pins/${FbID}.json`)
+                .then(({ data }) => resolve(data));
+        });
+    };
 
-    return { addBoard, getBoards, getPins, deletePin, addNewPin, deleteBoards};
+
+    return { addBoard, getBoards, getPins, editPin, addNewPin, deleteBoards, deletePin, onePin};
 };

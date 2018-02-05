@@ -4,7 +4,7 @@
             <h4>{{pin.title}}</h3>
             <img src='{{pin.img}}' alt='{{pin.title}}'></img>
             <p>"{{pin.notes}}"</p>
-                <button type="button" ng-click="editPin(pin.id)" class="btn btn-outline-secondary btn btn-primary btn-sm">Edit</button>
+                <button type="button" class="btn btn-outline-secondary btn btn-primary btn-sm"><a ng-href="#!/create-pin/{{pin.id}}">Edit</a></button>
                 <button type="button" ng-click="deletePin(pin.id)" class="btn btn-outline-danger btn btn-primary btn-sm">Delete</button>
         </div>
     </div>

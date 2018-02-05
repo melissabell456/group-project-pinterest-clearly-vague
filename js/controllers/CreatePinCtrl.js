@@ -7,7 +7,7 @@ module.exports = function ($scope, PinFactory, $window) {
 
   let uid = firebase.auth().currentUser.uid;
   
-  $scope.addPin = () => {
+  $scope.savePin = () => {
     $scope.pin.uid = uid;
     PinFactory.addNewPin($scope.pin)
     .then(() => $window.location.href = `#!/boards/${$scope.pin.board_id}`);
