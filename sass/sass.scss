@@ -1,0 +1,82 @@
+#content {
+  padding: 1em;
+}
+
+img {
+  max-width: 150px;
+  height: 150px;
+  margin: auto;
+  padding: .20em 0 .20em 0;
+}
+
+.pin {
+  text-align: center;
+  border: 1px solid lightslategray;
+  border-radius: 10px;
+  margin: .45 em;
+  padding: 1em;
+}
+
+.form {
+  margin: 1em;
+  padding: .5em;
+  border: 1px solid lightslategray;
+  border-radius: 10px;
+}
+
+// .form button {
+//   display: inline-block;
+//   padding: auto;
+// }
+
+a {
+  color: darkslategray;
+}
+
+a:hover { 
+  color: red;
+  text-decoration: none;
+}
+
+.jumbotron {
+    width: 70%;
+    margin: 2vw auto;
+    padding: 3vw;
+    border-radius: 2vw;
+    background: lightcyan;
+    border: .2vw double cyan;
+    h1 {
+        background: radial-gradient(circle at 0 30%, lightblue 20%, gold 30%);
+        background-clip: text;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        margin-bottom: 1.3vw;
+        padding: .3vw;
+    }
+}
+
+a {
+    cursor: pointer;
+}
+
+#startPin {
+    transition: all .2s;
+    &:hover{
+        color: rgb(255, 249, 218);
+        letter-spacing: .004em;
+        box-shadow: 0 0 2vw .3vw rgb(255, 227, 68);
+        animation: glow 1.5s linear infinite;
+    }
+}
+
+@keyframes glow {
+    0% {
+        box-shadow: 0 0 2vw .3vw rgb(255, 227, 68);
+    }
+    50% {
+        box-shadow: 0 0 3vw 1vw rgb(255, 227, 68), 0 0 1vw .3vw rgb(68, 255, 255);
+    }
+    100% {
+        box-shadow: 0 0 2vw .3vw rgb(255, 227, 68);
+    }
+}

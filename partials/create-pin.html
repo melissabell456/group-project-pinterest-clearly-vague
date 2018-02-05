@@ -1,10 +1,15 @@
-<div>
-  <input type="text" placeholder="Title" ng-model="pin.title">
-  <br>
-  <input type="text" placeholder="IMG URL" ng-model="pin.img">
-  <br>
-  <textarea placeholder="Additional Information" ng-model="pin.notes" rows="15" cols="20"></textarea>
-  <br>
-  <select ng-model="pin.board_id" ng-options="board.board_id as board.title for board in userBoards"></select>
-  <button ng-click="addPin()">Add My Pin</button>
+<div class="form">
+  <input class="form-control form-control-lg" type="text" placeholder="Title" ng-model="pin.title">
+    <br>
+  <input class="form-control" type="text" placeholder="Add your image URL" ng-model="pin.img">
+    <br>
+  <div class="form-group">
+      <label for="exampleFormControlTextarea1">Pin Notes:</label>
+      <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" ng-model="pin.notes"></textarea>
+  </div>
+    <br>
+  <select class="custom-select" ng-model="pin.board_id" ng-options="board.board_id as board.title for board in userBoards"></select>
+    <br>
+    <br>
+    <button type="button" class="btn btn-outline-danger" ng-click="addPin()">Add My Pin</button>
 </div>

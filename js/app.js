@@ -27,7 +27,7 @@ const app = angular.module('kingPinApp', ['ngRoute'])
         $routeProvider
         .when("/home", {
             templateUrl: "/partials/home.html",
-            controller: ""
+            controller: "HomeCtrl"
         })
         .when("/boards", {
             templateUrl: "/partials/view-boards.html",

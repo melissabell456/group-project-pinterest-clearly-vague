@@ -1,9 +1,11 @@
-<div>
-    <h3>All Boards...</h3>
-    <ul ng-repeat="board in boards">
-        <li>
-            <a href="#!/boards/{{board.board_id}}">{{board.title}}</a>
-            <button ng-click="deleteBoard(board.board_id)">Delete Board</button>
-        </li>
-    </ul>
-</div>
+<h3>My Boards</h3>
+<div class="container">
+        <div class="row">
+            <div class="col-3 pin" ng-repeat='board in boards'>
+                <h4><a href="#!/boards/{{board.board_id}}">{{board.title}}</a></h3>
+                    <img ng-show="board.img !== undefined" src="{{board.img}}" alt="{{board.title}}">
+                        <br>
+                    <button type="button" ng-click="deleteBoard(board.board_id)" class="btn btn-outline-danger btn btn-primary btn-sm">Delete</button>
+            </div>
+        </div>
+    </div>
