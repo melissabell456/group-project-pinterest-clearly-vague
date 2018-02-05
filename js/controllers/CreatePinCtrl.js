@@ -15,7 +15,7 @@ module.exports = function ($scope, PinFactory, $window) {
 
   PinFactory.getBoards()
   .then(userBoards => {
-    $scope.userBoards = userBoards.data;
+    $scope.userBoards = userBoards;
   })
   .catch(err => {
     console.log(err);
