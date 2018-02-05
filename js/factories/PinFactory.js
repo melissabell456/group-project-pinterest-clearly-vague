@@ -12,7 +12,6 @@ module.exports = function ($q, $http, FBUrl) {
           .post(`${FBUrl}/pins.json`, 
           JSON.stringify(newPinObj))
           .then( (returnedData) => {
-            console.log("what is returned", returnedData);
             resolve(returnedData);
           })
           .catch((err) => {
@@ -42,7 +41,6 @@ module.exports = function ($q, $http, FBUrl) {
                 // Wait until all pins are recived and take out first image.
                 Promise.all(boardsWithImagePromiseArray).then(pinPromises => {
                     let pinsPromisesArray = Object.values(pinPromises);
-                    console.log('pinPromiseseArray', pinsPromisesArray);
                     // If there are any images in the board
                     pinsPromisesArray.map(pins => {
                         let pinArray = Object.values(pins);
@@ -60,7 +58,6 @@ module.exports = function ($q, $http, FBUrl) {
 
     const addBoard = boardObj => {
         return $q((resolve, reject) => {
-            console.log("this will go to firebase", boardObj);
             $http
                 .post(`${FBUrl}/boards.json`,
                        JSON.stringify(boardObj))

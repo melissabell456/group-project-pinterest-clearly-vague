@@ -3,7 +3,6 @@
 module.exports = function ($scope, $routeParams, PinFactory, $window) {
     PinFactory.getPins($routeParams.boardID)
     .then(pins => {
-        console.log('pins', pins);
         // Add firebase key to each pin.
         let pinArray = Object.keys(pins).map(key => {
             pins[key].id = key;

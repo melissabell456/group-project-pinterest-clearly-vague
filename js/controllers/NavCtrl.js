@@ -36,4 +36,7 @@ module.exports = function ($scope, AuthFactory, $window) {
 
     $scope.isLoggedIn = () => firebase.auth().currentUser;
 
+    AuthFactory.isAuthenticated()
+        .then(() => $scope.userName = firebase.auth().currentUser.displayName);
+
 };

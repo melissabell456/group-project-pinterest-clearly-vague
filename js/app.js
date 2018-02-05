@@ -8,12 +8,9 @@ const firebase = require('firebase');
 let isAuth = (AuthFactory, $window) =>
     new Promise((resolve, reject) => {
         AuthFactory.isAuthenticated().then(userBool => {
-            console.log("User resolved...", userBool);
             if (userBool) {
-                console.log("Authenticated: Two Thumbs WAAAAAY Up");
                 resolve();
             } else {
-                console.log("Not Authenticated: GETOUT!!");
                 $window.location.href = "#!/home";
                 reject();
             }
