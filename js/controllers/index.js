@@ -9,3 +9,4 @@ app.controller('CreatePinCtrl', require('./CreatePinCtrl'));
 app.controller('NavCtrl', require('./NavCtrl'));
 app.controller('PinCtrl', require('./PinCtrl'));
 app.controller('UserCtrl', require('./UserCtrl'));
+app.controller('EditCtrl', require('./EditCtrl'));

@@ -66,6 +66,15 @@ module.exports = function ($q, $http, FBUrl) {
         });
     };
 
+    const editPin = (boardId, id) => {
+        console.log(id, "test");
+        return $q((resolve, reject) => {
+            $http
+                .patch(`${FBUrl}pins/${id}.json`) 
+                .then(({ data }) => resolve(data));
+        });
+    };
+
     const deletePin = id => {
         return $q((resolve, reject) => {
             $http
@@ -75,5 +84,5 @@ module.exports = function ($q, $http, FBUrl) {
     };
 
 
-    return { addBoard, getBoards, getPins, deletePin, addNewPin, deleteBoards};
+    return { addBoard, getBoards, getPins, editPin, addNewPin, deleteBoards, deletePin};
 };

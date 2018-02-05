@@ -49,6 +49,11 @@ const app = angular.module('kingPinApp', ['ngRoute'])
             controller: "CreatePinCtrl",
             resolve: { isAuth }
         })
+        .when("/create-pin/:id", {
+            templateUrl: "/partials/create-pin.html",
+            controller: "EditCtrl",
+            resolve: { isAuth }
+        })
         .otherwise("/home");
     })
     .run(FBCreds => {
