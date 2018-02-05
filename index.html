@@ -12,14 +12,11 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="css/main.css">
 </head>
-<body>
-    
+<body>  
   <div ng-app="kingPinApp">
-        <div ng-include="'/partials/nav.html'" ng-controller="NavCtrl">
-
-        </div>
-    <div ng-view>
-    
+    <div ng-include="'/partials/nav.html'" ng-controller="NavCtrl"></div>
+    <div id="content">
+      <div ng-view></div>
     </div>
   </div>
 <script src="dist/app.js"></script>
