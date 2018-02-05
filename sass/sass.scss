@@ -24,8 +24,17 @@ img {
   border-radius: 10px;
 }
 
-.form button {
-  display: inline-block;
-  padding: auto;
+// .form button {
+//   display: inline-block;
+//   padding: auto;
+// }
+
+a {
+  color: darkslategray;
+}
+
+a:hover { 
+  color: red;
+  text-decoration: none;
 }
 
